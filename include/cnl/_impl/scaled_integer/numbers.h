@@ -13,8 +13,9 @@
 #include "num_traits.h"
 #include "type.h"
 
-#include "../../numbers.h"
 #include "../used_digits.h"
+
+#include <numbers>
 
 /// compositional numeric library
 namespace cnl {
@@ -90,71 +91,73 @@ namespace cnl {
                    : procedure();
         }
     }
+}
 
+namespace std {
     namespace numbers {
-        /// specialization of \ref cnl::e for \ref cnl::scaled_integer
-        template<typename Rep, int Exponent> inline constexpr scaled_integer<Rep, power<Exponent>> e_v<scaled_integer<Rep, power<Exponent>>> {
-                _impl::constant_with_fallback<long double, Rep, Exponent>(e_v<long double>, _impl::e<Rep, Exponent>)
+        /// specialization of `std::numbers::e` for \ref cnl::scaled_integer
+        template<typename Rep, int Exponent> inline constexpr cnl::scaled_integer<Rep, cnl::power<Exponent>> e_v<cnl::scaled_integer<Rep, cnl::power<Exponent>>> {
+                cnl::_impl::constant_with_fallback<long double, Rep, Exponent>(e_v<long double>, cnl::_impl::e<Rep, Exponent>)
         };
 
-        /// specialization of \ref cnl::log2e for \ref cnl::scaled_integer
-        template<typename Rep, int Exponent> inline constexpr scaled_integer<Rep, power<Exponent>> log2e_v<scaled_integer<Rep, power<Exponent>>> {
-                scaled_integer<Rep, power<Exponent>>{log2e_v<long double>}
+        /// specialization of `std::numbers::log2e` for \ref cnl::scaled_integer
+        template<typename Rep, int Exponent> inline constexpr cnl::scaled_integer<Rep, cnl::power<Exponent>> log2e_v<cnl::scaled_integer<Rep, cnl::power<Exponent>>> {
+                cnl::scaled_integer<Rep, cnl::power<Exponent>>{log2e_v<long double>}
         };
 
-        /// specialization of \ref cnl::log10e for \ref cnl::scaled_integer
-        template<typename Rep, int Exponent> inline constexpr scaled_integer<Rep, power<Exponent>> log10e_v<scaled_integer<Rep, power<Exponent>>> {
-                scaled_integer<Rep, power<Exponent>>{log10e_v<long double>}
+        /// specialization of `std::numbers::log10e` for \ref cnl::scaled_integer
+        template<typename Rep, int Exponent> inline constexpr cnl::scaled_integer<Rep, cnl::power<Exponent>> log10e_v<cnl::scaled_integer<Rep, cnl::power<Exponent>>> {
+                cnl::scaled_integer<Rep, cnl::power<Exponent>>{log10e_v<long double>}
         };
 
-        /// specialization of \ref cnl::pi for \ref cnl::scaled_integer
-        template<typename Rep, int Exponent> inline constexpr scaled_integer<Rep, power<Exponent>> pi_v<scaled_integer<Rep, power<Exponent>>>{
-                _impl::constant_with_fallback<long double, Rep, Exponent>(pi_v<long double>, _impl::pi<Rep, Exponent>)
+        /// specialization of `std::numbers::pi` for \ref cnl::scaled_integer
+        template<typename Rep, int Exponent> inline constexpr cnl::scaled_integer<Rep, cnl::power<Exponent>> pi_v<cnl::scaled_integer<Rep, cnl::power<Exponent>>>{
+                cnl::_impl::constant_with_fallback<long double, Rep, Exponent>(pi_v<long double>, cnl::_impl::pi<Rep, Exponent>)
         };
 
-        /// specialization of \ref cnl::invpi for \ref cnl::scaled_integer
-        template<typename Rep, int Exponent> inline constexpr scaled_integer<Rep, power<Exponent>> inv_pi_v<scaled_integer<Rep, power<Exponent>>> {
-                scaled_integer<Rep, power<Exponent>>{inv_pi_v<long double>}
+        /// specialization of `std::numbers::invpi` for \ref cnl::scaled_integer
+        template<typename Rep, int Exponent> inline constexpr cnl::scaled_integer<Rep, cnl::power<Exponent>> inv_pi_v<cnl::scaled_integer<Rep, cnl::power<Exponent>>> {
+                cnl::scaled_integer<Rep, cnl::power<Exponent>>{inv_pi_v<long double>}
         };
 
-        /// specialization of \ref cnl::inv_sqrtpi for \ref cnl::scaled_integer
-        template<typename Rep, int Exponent> inline constexpr scaled_integer<Rep, power<Exponent>> inv_sqrtpi_v<scaled_integer<Rep, power<Exponent>>> {
-                scaled_integer<Rep, power<Exponent>>{inv_sqrtpi_v<long double>}
+        /// specialization of `std::numbers::inv_sqrtpi` for \ref cnl::scaled_integer
+        template<typename Rep, int Exponent> inline constexpr cnl::scaled_integer<Rep, cnl::power<Exponent>> inv_sqrtpi_v<cnl::scaled_integer<Rep, cnl::power<Exponent>>> {
+                cnl::scaled_integer<Rep, cnl::power<Exponent>>{inv_sqrtpi_v<long double>}
         };
 
-        /// specialization of \ref cnl::ln2 for \ref cnl::scaled_integer
-        template<typename Rep, int Exponent> inline constexpr scaled_integer<Rep, power<Exponent>> ln2_v<scaled_integer<Rep, power<Exponent>>> {
-                scaled_integer<Rep, power<Exponent>>{ln2_v<long double>}
+        /// specialization of `std::numbers::ln2` for \ref cnl::scaled_integer
+        template<typename Rep, int Exponent> inline constexpr cnl::scaled_integer<Rep, cnl::power<Exponent>> ln2_v<cnl::scaled_integer<Rep, cnl::power<Exponent>>> {
+                cnl::scaled_integer<Rep, cnl::power<Exponent>>{ln2_v<long double>}
         };
 
-        /// specialization of \ref cnl::ln10 for \ref cnl::scaled_integer
-        template<typename Rep, int Exponent> inline constexpr scaled_integer<Rep, power<Exponent>> ln10_v<scaled_integer<Rep, power<Exponent>>> {
-                scaled_integer<Rep, power<Exponent>>{ln10_v<long double>}
+        /// specialization of `std::numbers::ln10` for \ref cnl::scaled_integer
+        template<typename Rep, int Exponent> inline constexpr cnl::scaled_integer<Rep, cnl::power<Exponent>> ln10_v<cnl::scaled_integer<Rep, cnl::power<Exponent>>> {
+                cnl::scaled_integer<Rep, cnl::power<Exponent>>{ln10_v<long double>}
         };
 
-        /// specialization of \ref cnl::sqrt2 for \ref cnl::scaled_integer
-        template<typename Rep, int Exponent> inline constexpr scaled_integer<Rep, power<Exponent>> sqrt2_v<scaled_integer<Rep, power<Exponent>>> {
-                scaled_integer<Rep, power<Exponent>>{sqrt2_v<long double>}
+        /// specialization of `std::numbers::sqrt2` for \ref cnl::scaled_integer
+        template<typename Rep, int Exponent> inline constexpr cnl::scaled_integer<Rep, cnl::power<Exponent>> sqrt2_v<cnl::scaled_integer<Rep, cnl::power<Exponent>>> {
+                cnl::scaled_integer<Rep, cnl::power<Exponent>>{sqrt2_v<long double>}
         };
 
-        /// specialization of \ref cnl::sqrt3 for \ref cnl::scaled_integer
-        template<typename Rep, int Exponent> inline constexpr scaled_integer<Rep, power<Exponent>> sqrt3_v<scaled_integer<Rep, power<Exponent>>> {
-                scaled_integer<Rep, power<Exponent>>{sqrt3_v<long double>}
+        /// specialization of `std::numbers::sqrt3` for \ref cnl::scaled_integer
+        template<typename Rep, int Exponent> inline constexpr cnl::scaled_integer<Rep, cnl::power<Exponent>> sqrt3_v<cnl::scaled_integer<Rep, cnl::power<Exponent>>> {
+                cnl::scaled_integer<Rep, cnl::power<Exponent>>{sqrt3_v<long double>}
         };
 
-        /// specialization of \ref cnl::invsqrt3 for \ref cnl::scaled_integer
-        template<typename Rep, int Exponent> inline constexpr scaled_integer<Rep, power<Exponent>> inv_sqrt3_v<scaled_integer<Rep, power<Exponent>>> {
-                scaled_integer<Rep, power<Exponent>>{inv_sqrt3_v<long double>}
+        /// specialization of `std::numbers::invsqrt3` for \ref cnl::scaled_integer
+        template<typename Rep, int Exponent> inline constexpr cnl::scaled_integer<Rep, cnl::power<Exponent>> inv_sqrt3_v<cnl::scaled_integer<Rep, cnl::power<Exponent>>> {
+                cnl::scaled_integer<Rep, cnl::power<Exponent>>{inv_sqrt3_v<long double>}
         };
 
-        /// specialization of \ref cnl::egamma for \ref cnl::scaled_integer
-        template<typename Rep, int Exponent> inline constexpr scaled_integer<Rep, power<Exponent>> egamma_v<scaled_integer<Rep, power<Exponent>>> {
-                scaled_integer<Rep, power<Exponent>>{egamma_v<long double>}
+        /// specialization of `std::numbers::egamma` for \ref cnl::scaled_integer
+        template<typename Rep, int Exponent> inline constexpr cnl::scaled_integer<Rep, cnl::power<Exponent>> egamma_v<cnl::scaled_integer<Rep, cnl::power<Exponent>>> {
+                cnl::scaled_integer<Rep, cnl::power<Exponent>>{egamma_v<long double>}
         };
 
-        /// specialization of \ref cnl::phi for \ref cnl::scaled_integer
-        template<typename Rep, int Exponent> inline constexpr scaled_integer<Rep, power<Exponent>> phi_v<scaled_integer<Rep, power<Exponent>>> {
-                scaled_integer<Rep, power<Exponent>>{phi_v<long double>}
+        /// specialization of `std::numbers::phi` for \ref cnl::scaled_integer
+        template<typename Rep, int Exponent> inline constexpr cnl::scaled_integer<Rep, cnl::power<Exponent>> phi_v<cnl::scaled_integer<Rep, cnl::power<Exponent>>> {
+                cnl::scaled_integer<Rep, cnl::power<Exponent>>{phi_v<long double>}
         };
     }
 #endif  // defined(__cpp_inline_variables)
