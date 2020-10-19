@@ -5,7 +5,6 @@ set -euo pipefail
 EXCEPTIONS=${EXCEPTIONS:-ON}
 GENERATOR=${GENERATOR:-"Unix Makefiles"}
 INT128=${INT128:-ON}
-STANDARD=${STANDARD:-17}
 TOOLCHAIN=${TOOLCHAIN:-gcc}
 
 # Advice from docs.travis-ci.com/user/caching/#ccache-cache
@@ -38,7 +37,6 @@ conan remote add \
   johnmcfarlane/cnl https://api.bintray.com/conan/johnmcfarlane/cnl
 
 "${PROJECT_DIR}/${SCRIPT}" \
-  -DCMAKE_CXX_STANDARD="${STANDARD}" \
   -DCMAKE_TOOLCHAIN_FILE="${PROJECT_DIR}/test/cmake/toolchain/${TOOLCHAIN}".cmake \
   -DCNL_EXCEPTIONS="${EXCEPTIONS}" \
   -DCNL_INT128="${INT128}" \

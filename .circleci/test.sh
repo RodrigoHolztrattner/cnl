@@ -2,8 +2,6 @@
 
 set -ex
 
-STD=$1
-
 mkdir /tmp/cnl
 cd /tmp/cnl
 
@@ -14,6 +12,5 @@ conan remote add \
   johnmcfarlane/cnl https://api.bintray.com/conan/johnmcfarlane/cnl
 
 /root/project/test/scripts/unit-test.sh \
-  -DCMAKE_CXX_STANDARD="${STD}" \
   -DCMAKE_TOOLCHAIN_FILE=/root/project/test/cmake/toolchain/gcc.cmake \
   -G "Unix Makefiles"

@@ -71,16 +71,16 @@ jobs:
             cmake --build . --target test-all -- --jobs 2 &&
             ctest --output-on-failure --parallel 2
 
-  "c++20":
+  "x86-64":
     docker:
       - image: johnmcfarlane/cnl_ci:gcc-10
     steps:
       - checkout
       - run:
           name: Run tests
-          command: NUM_CPUS=2 . /root/project/.circleci/test.sh 20
+          command: NUM_CPUS=2 . /root/project/.circleci/test.sh
 
-  "c++17-arm7":
+  "arm7":
     docker:
       - image: johnmcfarlane/cnl_ci:gcc-10
     steps:
@@ -90,33 +90,6 @@ jobs:
           command: NUM_CPUS=2 . /root/project/.circleci/test-arm.sh
           no_output_timeout: 20m
 
-  "c++17":
-    docker:
-      - image: johnmcfarlane/cnl_ci:gcc-10
-    steps:
-      - checkout
-      - run:
-          name: Run tests
-          command: NUM_CPUS=2 . /root/project/.circleci/test.sh 17
-
-  "c++14":
-    docker:
-      - image: johnmcfarlane/cnl_ci:gcc-10
-    steps:
-      - checkout
-      - run:
-          name: Run tests
-          command: NUM_CPUS=2 . /root/project/.circleci/test.sh 14
-
-  "c++11":
-    docker:
-      - image: johnmcfarlane/cnl_ci:gcc-10
-    steps:
-      - checkout
-      - run:
-          name: Run tests
-          command: NUM_CPUS=2 . /root/project/.circleci/test.sh 11
-
 workflows:
   version: 2
   build:
@@ -124,8 +97,5 @@ workflows:
       - "cmake-install"
       - "cmake-test-gcc"
       - "cmake-test-clang"
-      - "c++20"
-      - "c++17"
-      - "c++14"
-      - "c++11"
-      - "c++17-arm7"
+      - "x86-64"
+      - "arm7"

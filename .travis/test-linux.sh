@@ -5,7 +5,6 @@ set -euo pipefail
 EXCEPTIONS=${EXCEPTIONS:-ON}
 GENERATOR=${GENERATOR:-Ninja}
 INT128=${INT128:-ON}
-STANDARD=${STANDARD:-17}
 TOOLCHAIN=${TOOLCHAIN:-gcc}
 
 CONTAINER_PROJECT_DIR=/cnl
@@ -24,7 +23,6 @@ docker run \
   "johnmcfarlane/${IMG}" \
   bash -c "conan remote add johnmcfarlane/cnl https://api.bintray.com/conan/johnmcfarlane/cnl \
     && CNL_VERSION=${TRAVIS_BRANCH} CONAN_PASS=${CONAN_PASS} CONAN_USER=${CONAN_USER} GITHUB_TOKEN=${GITHUB_TOKEN} \"${CONTAINER_PROJECT_DIR}/${SCRIPT}\" \
-    -DCMAKE_CXX_STANDARD=\"${STANDARD}\" \
     -DCMAKE_TOOLCHAIN_FILE=\"${CONTAINER_PROJECT_DIR}/test/cmake/toolchain/${TOOLCHAIN}\".cmake \
     -DCNL_EXCEPTIONS=\"${EXCEPTIONS}\" \
     -DCNL_INT128=\"${INT128}\" \
