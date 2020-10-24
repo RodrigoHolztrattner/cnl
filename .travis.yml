@@ -6,6 +6,11 @@ os: linux
 
 jobs:
   include:
+    - name: OS X/GCC 10, Unit test
+      os: osx
+      osx_image: xcode12.2
+      env: CC=gcc-10 CXX=g++-10 PACKAGE=gcc@10 VERSION=10 SCRIPT=test/scripts/unit-test.sh
+
     - name: Linux/Clang 10, Clang-Tidy
       os: linux
       env: IMG=cnl_ci:clang-10 SCRIPT=test/scripts/clang-tidy.sh TOOLCHAIN=clang
