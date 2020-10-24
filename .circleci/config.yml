@@ -20,7 +20,7 @@ jobs:
 
   "cmake-test-gcc":
     docker:
-      - image: johnmcfarlane/cnl_ci:gcc-head
+      - image: johnmcfarlane/cnl_ci:gcc-10
     steps:
       - checkout
       - run:
