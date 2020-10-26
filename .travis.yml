@@ -13,14 +13,14 @@ jobs:
 
     - name: Linux/Clang 10, Clang-Tidy
       os: linux
-      env: IMG=cnl_ci:clang-10 SCRIPT=test/scripts/clang-tidy.sh TOOLCHAIN=clang
+      env: IMG=cnl_ci:clang-10-libstdcpp SCRIPT=test/scripts/clang-tidy.sh TOOLCHAIN=clang
 
     - name: Linux/Clang 10, Benchmark
       os: linux
-      env: IMG=cnl_ci:clang-10 SCRIPT=test/scripts/benchmark.sh TOOLCHAIN=clang GENERATOR="Unix Makefiles"
+      env: IMG=cnl_ci:clang-10-libstdcpp SCRIPT=test/scripts/benchmark.sh TOOLCHAIN=clang GENERATOR="Unix Makefiles"
     - name: Linux/Clang 10, Sanitize
       os: linux
-      env: IMG=cnl_ci:clang-10 SCRIPT=test/scripts/sanitize-clang.sh TOOLCHAIN=clang
+      env: IMG=cnl_ci:clang-10-libstdcpp SCRIPT=test/scripts/sanitize-clang.sh TOOLCHAIN=clang
 
     - name: Linux/GCC 10, Benchmark
       os: linux

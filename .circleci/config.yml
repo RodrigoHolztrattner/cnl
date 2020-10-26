@@ -47,7 +47,7 @@ jobs:
 
   "cmake-test-clang":
     docker:
-      - image: johnmcfarlane/cnl_ci:clang-head
+      - image: johnmcfarlane/cnl_ci:clang-10-libstdcpp
     steps:
       - checkout
       - run:
