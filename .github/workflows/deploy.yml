@@ -1,0 +1,25 @@
+name: Deployment
+
+on:
+  push:
+    tags:
+      - v*.*.*
+      condition: $TRAVIS_BRANCH =~ ^v([[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+)$
+
+jobs:
+  # Deploy release
+  deploy:
+    runs-on: ubuntu-18.04
+    container: johnmcfarlane/cnl_ci:gcc-10
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Generate documentation
+      shell: bash
+      run: $GITHUB_WORKSPACE/doc/generate.sh
+
+    - name: Upload documentation
+      uses: actions/upload-artifact@v2
+      with:
+        name: documentation
+        path: $GITHUB_WORKSPACE/doc/gh-pages
