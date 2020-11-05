@@ -4,7 +4,6 @@ on:
   push:
     tags:
       - v*.*.*
-      condition: $TRAVIS_BRANCH =~ ^v([[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+)$
 
 jobs:
   # Deploy release
@@ -18,8 +17,6 @@ jobs:
       shell: bash
       run: $GITHUB_WORKSPACE/doc/generate.sh
 
-    - name: Upload documentation
-      uses: actions/upload-artifact@v2
-      with:
-        name: documentation
-        path: $GITHUB_WORKSPACE/doc/gh-pages
+    - name: Deploy
+      shell: bash
+      run: CNL_VERSION=$GITHUB_REF $GITHUB_WORKSPACE/.github/deploy.sh
